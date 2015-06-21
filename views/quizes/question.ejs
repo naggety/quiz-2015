@@ -1,8 +1,6 @@
-<% include top.ejs %>
-  <form method="get" action="/quizes/answer">
-    <label for="respuesta">Pregunta: <%= pregunta %></label>
-    <br/>
-    <input type="text" id="respuesta" name="respuesta" placeholder="Responda aquí" required />
-    <input type="submit" value="Enviar" />
-  </form>
-<% include bottom.ejs %>
+<form method="get" action="/quizes/answer">
+  <label for="respuesta">Pregunta: <%= pregunta %></label>
+  <br/>
+  <input type="text" id="respuesta" name="respuesta" placeholder="Responda aquí" required />
+  <input type="submit" value="Enviar" />
+</form>
