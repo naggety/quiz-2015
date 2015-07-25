@@ -1,3 +1,8 @@
+// carga archivo .env para variables de entorno
+// var env = require('node-env-file');
+// env(__dirname + '/.env');
+
+// carga módulos varios
 var express = require('express');
 var partials = require('express-partials');
 var path = require('path');
