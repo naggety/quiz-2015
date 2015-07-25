@@ -1,3 +1,7 @@
+<form method="get" action="/quizes">
+  <input type="text" name="search" id="search" placeholder="Busque una pregunta" />
+  <input type="submit" value="buscar" />
+</form>
 <ul id="quizes-list">
 <% for (var i = 0; i < quizes.length; i++) { %>
   <li><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></li>

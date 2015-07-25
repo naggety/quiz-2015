@@ -17,7 +17,9 @@ exports.autoload = function (req, res, next, quizId) {
 };
 
 exports.list = function (req, res) {
-  models.Quiz.findAll().then(function(quizes){
+  var search = !req.query.search ? false : '%' + req.query.search.replace(' ', '%') + '%';
+  var args = !search ? {} : {where: ["pregunta LIKE ?", search], order: [['pregunta', 'ASC']]};
+  models.Quiz.findAll(args).then(function(quizes){
     res.render('quizes/list', {quizes: quizes});
   });
 };
