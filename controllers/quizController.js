@@ -1,15 +1,21 @@
 var models = require('../models/models.js');
 
+exports.list = function (req, res) {
+  models.Quiz.findAll().then(function(quizes){
+    res.render('quizes/list', {quizes: quizes});
+  });
+};
+
 exports.question = function (req, res) {
-  models.Quiz.findAll().success(function(quiz){
-    res.render('quizes/question', {pregunta: quiz[0].pregunta});
+  models.Quiz.find(req.params.quizId).then(function(quiz){
+    res.render('quizes/question', {quiz: quiz});
   });
 };
 
 exports.answer = function (req, res) {
-  models.Quiz.findAll().success(function(quiz){
-    var rsp = req.query.respuesta === quiz[0].respuesta ? 'Correcto' : 'Incorrecto';
-    res.render('quizes/answer', {respuesta: rsp});
+  models.Quiz.find(req.params.quizId).then(function(quiz){
+    var rsp = req.query.respuesta === quiz.respuesta ? 'Correcto' : 'Incorrecto';
+    res.render('quizes/answer', {quiz: quiz, respuesta: rsp});
   });
 };
 

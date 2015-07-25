@@ -31,9 +31,13 @@ exports.Quiz = Quiz;
 sequelize.sync().success(function() {
   Quiz.count().success(function(count) {
     if (count === 0) {
-      Quiz
-        .create({pregunta: 'Capital de Italia', respuesta: 'Roma'})
-        .success(function(){ console.log('BBDD inicializada'); });
+      Quiz.create({pregunta: 'Capital de Italia', respuesta: 'Roma'});
+      Quiz.create({pregunta: 'Capital de Portugal', respuesta: 'Lisboa'})
+        .then(function(){ console.log('BBDD inicializada'); });
     }
+    // descomentar para borrar todas las filas
+    // else {
+    //   Quiz.destroy().success(function(){ console.log("BBDD borrada")});
+    // }
   });
 });
