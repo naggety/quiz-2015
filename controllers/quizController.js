@@ -25,16 +25,20 @@ exports.list = function (req, res) {
 };
 
 exports.getnew = function (req, res) {
-  res.render('quizes/formNew');
+  res.render('quizes/formNew', {quiz: {pregunta: '', respuesta: ''}});
 }
 
 exports.postnew = function (req, res) {
-  models.Quiz
-    .build(req.body.quiz) // usa el objeto quiz recibido en el body del mensaje en formato urlencoded
-    .save({fields: ["pregunta", "respuesta"]})  // lo guarda en la bbdd
-    .then(function() {
-      res.redirect('/quizes');    // redirecciona
-    });
+  var quiz = models.Quiz.build(req.body.quiz); // usa el objeto quiz recibido en el body del mensaje en formato urlencoded
+  var err = quiz.validate();
+  if (err) {
+    res.render('quizes/formNew', {quiz: quiz, errors: err});
+  }
+  else {
+    quiz
+      .save({fields: ["pregunta", "respuesta"]})  // lo guarda en la bbdd
+      .then(function() { res.redirect('/quizes'); });
+  }
 }
 
 exports.question = function (req, res) {

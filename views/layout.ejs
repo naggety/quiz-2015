@@ -27,6 +27,16 @@
       </ul>
     </nav>
     <main class="main" id="s1">
+      <% if (typeof errors != 'undefined') { %>
+        <header>
+          <div id="errorMsgs">
+            Corregir errores:<br/>
+            <% for (var i in errors) { %>
+              <%= errors[i] %><br/>
+            <% } %>
+          </div>
+        </header>
+      <% } %>
       <%- body %>
     </main>
     <footer class="main" id="f1">
