@@ -1,0 +1,11 @@
+<h2>Añadir pregunta</h2>
+<form method="post" action="/quizes">
+  <label for="pregunta" class="rem">Pregunta:</label>
+  <input type="text" name="quiz[pregunta]" id="pregunta" placeholder="escriba aquí la pregunta" />
+  <br/>
+  <label for="respuesta" class="rem">Respuesta:</label>
+  <input type="text" name="quiz[respuesta]" id="respuesta" placeholder="escriba aquí la respuesta" />
+  <br/>
+  <a href="/quizes">Cancelar</a>
+  <input type="submit"  value="Guardar" />
+</form>
