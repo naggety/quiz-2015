@@ -25,7 +25,7 @@ exports.list = function (req, res) {
 };
 
 exports.getnew = function (req, res) {
-  res.render('quizes/formNew', {quiz: {pregunta: '', respuesta: ''}});
+  res.render('quizes/formNew', {quiz: {pregunta: '', respuesta: '', tema: ''}});
 }
 
 exports.postnew = function (req, res) {
@@ -36,7 +36,7 @@ exports.postnew = function (req, res) {
   }
   else {
     quiz
-      .save({fields: ["pregunta", "respuesta"]})  // lo guarda en la bbdd
+      .save({fields: ["pregunta", "respuesta", "tema"]})  // lo guarda en la bbdd
       .then(function() { res.redirect('/quizes'); });
   }
 }
@@ -48,13 +48,14 @@ exports.getedit = function (req, res) {
 exports.putedit = function (req, res) {
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
+  req.quiz.tema = req.body.quiz.tema;
   var err = req.quiz.validate();
   if (err) {
     res.render('quizes/formEdit', {quiz: req.quiz, errors: err});
   }
   else {
     req.quiz
-      .save({fields: ["pregunta", "respuesta"]})  // lo guarda en la bbdd
+      .save({fields: ["pregunta", "respuesta", "tema"]})  // lo guarda en la bbdd
       .then(function() { res.redirect('/quizes'); });
   }
 }
