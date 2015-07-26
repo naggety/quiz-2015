@@ -8,6 +8,7 @@ body { font: 16px Georgia Serif; }
 section > div , main > div{ padding: 20px; }
 header, footer, nav, main, section { background: #eee; text-align: center; }
 nav li { margin: 0px 10px 0px 0px; display: inline;}
+#quizes-list { margin: 0 auto 0 auto; }
 
 .button { border: 1px solid #777; padding: 3px; background: #fafafa;
   text-decoration: none; color: black; font: 16px Georgia Serif;}

@@ -59,6 +59,12 @@ exports.putedit = function (req, res) {
   }
 }
 
+exports.delete = function (req, res) {
+  req.quiz.destroy()
+    .then(function() { res.redirect('/quizes'); })
+    .catch(function(err) { next(err); });
+};
+
 exports.question = function (req, res) {
   res.render('quizes/question', {quiz: req.quiz});
 };

@@ -3,14 +3,20 @@
   <input type="submit" value="buscar" />
 </form>
 <br/>
-<ul id="quizes-list">
-<% for (var i = 0; i < quizes.length; i++) { %>
-  <li>
-    <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
-     -
-    <a href="quizes/<%= quizes[i].id %>/edit">editar</a>
-  </li>
-<% } %>
+  <table id="quizes-list">
+  <% for (var i = 0; i < quizes.length; i++) { %>
+    <tr>
+      <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+      <td><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
+      <td>
+        <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete" style="display:inline;">
+          <button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+            borrar
+          </button>
+        </form>
+      </td>
+    </tr>
+  <% } %>
+  </table>
 <br/>
-<a href="/quizes/new" class="button">Crear pregunta</a>
-</ul>
+<a href="/quizes/new"><button>Crear pregunta</button></a>
