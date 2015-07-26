@@ -41,6 +41,24 @@ exports.postnew = function (req, res) {
   }
 }
 
+exports.getedit = function (req, res) {
+  res.render('quizes/formEdit', {quiz: req.quiz});
+}
+
+exports.putedit = function (req, res) {
+  req.quiz.pregunta = req.body.quiz.pregunta;
+  req.quiz.respuesta = req.body.quiz.respuesta;
+  var err = req.quiz.validate();
+  if (err) {
+    res.render('quizes/formEdit', {quiz: req.quiz, errors: err});
+  }
+  else {
+    req.quiz
+      .save({fields: ["pregunta", "respuesta"]})  // lo guarda en la bbdd
+      .then(function() { res.redirect('/quizes'); });
+  }
+}
+
 exports.question = function (req, res) {
   res.render('quizes/question', {quiz: req.quiz});
 };
