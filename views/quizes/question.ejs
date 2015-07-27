@@ -1,3 +1,4 @@
+<h2>Pregunta</h2>
 <form method="get" action="/quizes/<%= quiz.id %>/answer">
   <label for="respuesta">Pregunta: <%= quiz.pregunta %></label>
   <br/>
@@ -5,3 +6,14 @@
   <input type="submit" value="Enviar" />
 </form>
 <a href="/quizes">Volver a la lista de preguntas</a>
+<br/><br/>
+<h3>Comentarios</h3>
+<form method="post" action="/quizes/<%= quiz.id %>/comments">
+  <textarea name="comment[texto]" placeholder="nuevo comentario"></textarea>
+  <input type="submit" value="comentar" />
+</form>
+<ul id="comentarios">
+<% for (var i in quiz.comments) { %>
+  <li><%= quiz.comments[i].texto %></li>
+<% } %>
+</ul>
