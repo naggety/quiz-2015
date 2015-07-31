@@ -13,3 +13,6 @@ nav li { margin: 0px 10px 0px 0px; display: inline;}
 .button { border: 1px solid #777; padding: 3px; background: #fafafa;
   text-decoration: none; color: black; font: 16px Georgia Serif;}
 #errorMsgs { color: #f61; font-size: smaller; }
+
+.right { float: right; }
+.form-logout { display: inline; }
