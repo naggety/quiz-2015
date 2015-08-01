@@ -13,7 +13,17 @@
   <input type="submit" value="comentar" />
 </form>
 <ul id="comentarios">
-<% for (var i in quiz.comments) { %>
-  <li><%= quiz.comments[i].texto %></li>
-<% } %>
+<% for (var i in quiz.comments) {
+    if (quiz.comments[i].publicado) { %>
+      <li><%= quiz.comments[i].texto %></li>
+    <% } else if (session.user) { %>
+      <li>
+        <%= quiz.comments[i].texto %>
+        <form class="inline" method="post" action="/quizes/<%= quiz.id %>/comments/<%= quiz.comments[i].id %>?_method=put">
+          <input type="hidden" name="publicado" value="true" />
+          <input type="submit" value="publicar" />
+        </form>
+      </li>
+    <% }
+} %>
 </ul>

@@ -15,4 +15,4 @@ nav li { margin: 0px 10px 0px 0px; display: inline;}
 #errorMsgs { color: #f61; font-size: smaller; }
 
 .right { float: right; }
-.form-logout { display: inline; }
+.inline { display: inline; }

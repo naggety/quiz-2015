@@ -23,7 +23,7 @@
         <% } else { %>
           <%= session.user.username %>
            -
-          <form class="form-logout" method="post" action="/logout">
+          <form class="inline" method="post" action="/logout">
             <input type="submit" value="logout" />
           </form>
         <% } %>
