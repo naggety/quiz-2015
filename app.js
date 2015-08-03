@@ -41,6 +41,24 @@ app.use(function(req, res, next) {
   next();
 })
 
+// autologout
+app.use(function(req, res, next) {
+  var lasttime = req.session.lastvisited;
+  var nowtime = new Date().getTime();
+  if (!req.session.user) {
+    delete req.session.lastvisited;
+  }
+  else if (lasttime && lasttime < nowtime - 120000) {
+    delete req.session.user;
+    delete req.session.lastvisited;
+  }
+  else {
+    req.session.lastvisited = nowtime;
+  }
+  next();
+});
+
+// rutas api REST
 app.use('/', routes);
 
 // catch 404 and forward to error handler
